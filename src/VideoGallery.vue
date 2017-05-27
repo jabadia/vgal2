@@ -82,9 +82,7 @@
         overflow: hidden;
         padding: 4px 8px;
     }
-
-    /*.video-player-modal iframe {*/
-        /*width: 100%;*/
-        /*!*height: calc(100% - 50px);*!*/
-    /*}*/
+    .v--modal-overlay {
+        background: rgba(0,0,0,.8) !important;
+    }
 </style>
