@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <div v-for="email in emails">
-            <h5>{{email.createdDateTime|formatDate}}, {{email.subject}}</h5>
+            <h3>{{email.createdDateTime|formatDate}}, {{email.subject}}</h3>
             <div class="row">
                 <div v-if="!email.videosDetails.length" class="col-xs-6 col-sm-4 col-md-3">
                     <div class="ja-card">
