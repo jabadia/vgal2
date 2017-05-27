@@ -42,6 +42,7 @@
         img {
             max-width: 100%;
         }
+        height: 200px;
     }
     .ja-current {
         opacity: 1

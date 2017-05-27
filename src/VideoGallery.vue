@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="container">
         <div v-for="email in emails">
             <h3>{{email.createdDateTime|formatDate}}, {{email.subject}}</h3>
             <div class="row">
