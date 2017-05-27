@@ -1,25 +1,25 @@
 <template>
     <div id="app">
-        <b-navbar type="inverse" variant="primary">
-            <b-link class="navbar-brand" to="#">
-                <span>Videos</span>
-            </b-link>
-        </b-navbar>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        Videos
+                    </a>
+                </div>
+            </div>
+        </nav>
         <video-gallery></video-gallery>
     </div>
 </template>
 
 <script>
-    import 'bootstrap/dist/css/bootstrap.css'
-    import 'bootstrap-vue/dist/bootstrap-vue.css'
-
     import VideoGallery from './VideoGallery.vue';
 
     export default {
         name: 'app',
         data () {
-            return {
-            }
+            return {}
         },
         components: {
             VideoGallery,

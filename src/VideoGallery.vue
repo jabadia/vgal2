@@ -1,27 +1,13 @@
 <template>
-    <div class="content">
+    <div class="container">
         <div v-for="email in emails">
             <h3>{{email.createdDateTime|formatDate}}, {{email.subject}}</h3>
             <div class="row">
                 <div v-if="!email.videosDetails.length" class="col-xs-6 col-sm-4 col-md-3">
-                    <div class="ja-card">
-                        <div class="ja-card-title">Ups!</div>
-                        <div class="ja-card-content">
-                            <span>no hay videos en este email</span>
-                        </div>
-                    </div>
+                    <video-card :video='null'></video-card>
                 </div>
                 <div v-for="(video, index) in email.videosDetails" class="col-xs-6 col-sm-4 col-md-3">
-                    <div class="ja-card" @click="openVideo(video)" :class="{'shadow-3': video == currentVideo}">
-                        <!--<a :href="video.link">-->
-                        <div class="ja-card-media">
-                            <img :src="video.thumbnails.medium.url" alt="">
-                        </div>
-                        <div class="ja-card-content">
-                            {{video.title}}
-                        </div>
-                        <!--</a>-->
-                    </div>
+                    <video-card :video='video' :is-current="video==currentVideo" @click.native="openVideo(video)"></video-card>
                 </div>
             </div>
         </div>
@@ -34,6 +20,7 @@
     import moment from 'moment';
     import Vue from 'vue';
     import _ from 'lodash';
+    import VideoCard from './VideoCard.vue';
 
     Vue.filter('formatDate', function (value) {
         if (value) {
@@ -51,9 +38,9 @@
         methods: {
             openVideo (video) {
                 this.currentVideo = video;
-                this.$nextTick(() => {
-                    this.$refs.videoModal.open();
-                });
+//                this.$nextTick(() => {
+//                    this.$refs.videoModal.open();
+//                });
                 console.log(video);
             },
             closedVideoModal () {
@@ -65,7 +52,10 @@
             return backendApi.getEmailsWithVideos().then(emails => {
                 this.emails = emails;
             });
-        }
+        },
+        components: {
+            VideoCard,
+        },
     }
 </script>
 
