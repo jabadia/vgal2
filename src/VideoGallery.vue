@@ -18,7 +18,7 @@
                :height="640">
             <div class="iframe-wrapper">
                 <iframe
-                        :src="'http://www.youtube.com/embed/' + currentVideo.id + '?autoplay=1&rel=0'"
+                        :src="'https://www.youtube.com/embed/' + currentVideo.id + '?autoplay=1&rel=0'"
                         height="600"
                         width="800"
                         frameborder="0"
