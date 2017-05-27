@@ -12,6 +12,22 @@
             </div>
         </div>
 
+        <modal name="video-player" :adaptative="true"
+               classes="video-player-modal"
+               :width="800"
+               :height="640">
+            <div class="iframe-wrapper">
+                <iframe
+                        :src="'http://www.youtube.com/embed/' + currentVideo.id + '?autoplay=1&rel=0'"
+                        height="600"
+                        width="800"
+                        frameborder="0"
+                        allowfullscreen
+                ></iframe>
+            </div>
+            <div class="video-title">{{currentVideo.title}}</div>
+        </modal>
+
     </div>
 </template>
 
@@ -38,6 +54,7 @@
         methods: {
             openVideo (video) {
                 this.currentVideo = video;
+                this.$modal.show('video-player');
 //                this.$nextTick(() => {
 //                    this.$refs.videoModal.open();
 //                });
@@ -60,4 +77,14 @@
 </script>
 
 <style>
+    .video-player-modal .video-title {
+        height: 40px;
+        overflow: hidden;
+        padding: 4px 8px;
+    }
+
+    /*.video-player-modal iframe {*/
+        /*width: 100%;*/
+        /*!*height: calc(100% - 50px);*!*/
+    /*}*/
 </style>

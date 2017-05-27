@@ -42,6 +42,7 @@
         img {
             max-width: 100%;
         }
+        overflow: hidden;
         height: 200px;
     }
     .ja-current {
