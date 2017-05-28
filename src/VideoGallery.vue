@@ -1,15 +1,16 @@
 <template>
     <div class="container-fluid">
-        <div v-for="year in sortedYears">
+        <div v-for="yearMonth in sortedYearMonths">
             <!--<h1>{{year}}</h1>-->
 
-            <div v-for="(attachment,index) in years[year]" v-if="attachment.videosDetails.length">
-                <h2 v-if="index === 0 || years[year][index-1].createdDateTime.getMonth() != attachment.createdDateTime.getMonth()">
-                    {{attachment.createdDateTime|monthName}} {{year}}
+            <div v-for="(attachment,index) in yearMonths[yearMonth]" v-if="attachment.videosDetails.length">
+                <h2 v-if="index === 0">
+                    <i class="glyphicon glyphicon-calendar"></i> {{attachment.createdDateTime|monthName}} {{attachment.createdDateTime.getFullYear()}}
                 </h2>
-                <h3>{{attachment.createdDateTime|formatDate}}, {{attachment.subject}}, {{attachment.name}}</h3>
+                <h3>{{attachment.createdDateTime|formatDate}}, {{attachment.subject}}</h3>
+                <h4>{{attachment.name}}</h4>
                 <div class="row">
-                    <div v-for="(video, index) in attachment.videosDetails" class="col-xs-6 col-sm-4 col-md-3">
+                    <div v-for="(video, index) in attachment.videosDetails" class="col-xs-4 col-sm-3">
                         <video-card :video='video'
                                     :is-current="video==currentVideo"
                                     @click.native="openVideo(video)"
@@ -61,13 +62,13 @@
     export default {
         data () {
             return {
-                years: [],
+                yearMonths: [],
                 currentVideo: {},
             };
         },
         computed: {
-            sortedYears() {
-                return _.keys(this.years).sort().reverse();
+            sortedYearMonths() {
+                return _.keys(this.yearMonths).sort().reverse();
             },
         },
         methods: {
@@ -88,8 +89,8 @@
 //            return backendApi.getEmailAttachmentsWithVideos().then(attachments => {
 //                this.attachments = attachments;
 //            });
-            return backendApi.getEmailAttachmentsGrouped().then(years => {
-                this.years = years;
+            return backendApi.getEmailAttachmentsGrouped().then(yearMonths => {
+                this.yearMonths = yearMonths;
             });
         },
         components: {

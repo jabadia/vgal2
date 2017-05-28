@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
-                        Videos
+                        <i class="glyphicon glyphicon-play-circle"></i> Videos
                     </a>
                 </div>
             </div>

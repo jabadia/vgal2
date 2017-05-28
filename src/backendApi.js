@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import _ from 'lodash';
 
 
@@ -23,8 +24,8 @@ export default {
     },
     getEmailAttachmentsGrouped() {
         return this.getEmailAttachmentsWithVideos().then( attachments => {
-            let byYear = _.groupBy(attachments, attachment => attachment.createdDateTime.getFullYear());
-            return byYear;
+            let byYearMonth = _.groupBy(attachments, attachment => moment(attachment.createdDateTime).format('YYYY.MM'));
+            return byYearMonth;
         }).catch( err => {
             console.error(err);
             return {};
