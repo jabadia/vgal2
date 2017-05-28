@@ -1,15 +1,6 @@
 <template>
 
-    <div>
-    <div v-if="!video" class="ja-card">
-        <div class="ja-card-title">Ups!</div>
-        <div class="ja-card-content">
-            <span>no hay videos en este email</span>
-        </div>
-    </div>
-
-    <div v-if="video"
-         class="ja-card"
+    <div class="ja-card"
          :class="{'ja-current': isCurrent}"
     >
         <!--<a :href="video.link">-->
@@ -21,17 +12,15 @@
         </div>
         <!--</a>-->
     </div>
-    </div>
 </template>
 
 <script>
     export default {
-        props: ['video','isCurrent'],
+        props: ['video', 'isCurrent'],
         data () {
             return {}
         },
-        methods: {
-        }
+        methods: {}
     }
 </script>
 
@@ -44,7 +33,9 @@
         }
         overflow: hidden;
         height: 200px;
+        margin-bottom: 10px;
     }
+
     .ja-current {
         opacity: 1
     }
